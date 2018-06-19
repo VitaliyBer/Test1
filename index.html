@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lashes</title>
+    <!-- Normalize -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <!-- Roboto Font -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <!-- Stroke Gap Icons -->
+    <link rel="stylesheet" href="css/stroke-gap-icons.css">
+    <!-- Main Styles File -->
+    <link rel="stylesheet" href="css/main.css">
+    <!-- Media Queries File -->
+    <link rel="stylesheet" href="css/media.css">
+    <link rel="stylesheet" href="css/animate.css">
+
+    <script src="js/vue.js"></script>
+    <script src="js/vue-carousel-3d.min.js"></script>
+    <
+
+</head>
+<body>
+<header class="header" id="header">
+    <div class="container" v-show="!menu1">
+        <nav>
+            <a href="#" class="logo jpk-font animated jello">ab</a>
+            <div class="lashes animated flip">
+                l
+                a
+                s
+                h
+                e
+                s
+            </div>
+
+            <a @click="menu1=!menu1" id="name" class="menu animated fadeInRight">
+                <span></span>
+                <span></span>
+                <span></span>
+                <p class="menu__text">Меню</p>
+            </a>
+
+        </nav>
+        <div class="offer">
+            <div class="offer_bg animated jello">
+                Lashes
+            </div>
+            <h1 class="offer_title">
+                And you <br>
+                are always excellent!
+            </h1>
+            <p class="offer_text">
+                Cosmetologist,
+                eyelash extension,
+                sugar epilation!
+            </p>
+            <button class="offer_btn btn animated swing">
+                Цены
+            </button>
+        </div>
+
+        <a href="#footer" class="scroll go_to animated lightSpeedIn">
+            scroll down
+        </a>
+    </div>
+
+    <transition name="slide-fade" enter-active-class="animated zoomIn">
+
+        <section v-show="menu1" id="menuG" class="menuG">
+            <a @click="menu1=!menu1" id="name-exit" class="menu-exit animated jello ">
+                <span></span>
+                <span></span>
+                <span></span>
+                <p class="menu__text">Закрыть</p>
+            </a>
+
+            <template v-for="(menuFull, value) in menuFulls">
+                <a :href="'#'+value" id="clickMenu" class="menu-nav__item go_to " @click="menu1=!menu1">
+                <span class="menu-nav__text">
+                {{ menuFull }}
+                </span>
+                </a>
+            </template>
+
+        </section>
+    </transition>
+</header>
+<section class="services" id="services">
+    <div class="container">
+        <div class="section-title">
+            <p class="section-title__intro">
+                be on top
+            </p>
+            <h2 class="section-title__title">
+                Услуги
+            </h2>
+        </div>
+        <div class="service">
+            <a class="service__item bg">
+                <h3 class="service__title">
+                    Наращивание
+                    ресниц
+                </h3>
+
+            </a>
+            <a class="service__item bg2">
+                <h3 class="service__title">
+                    Косметология
+                </h3>
+
+            </a>
+            <a class="service__item bg3">
+                <h3 class="service__title">
+                    Сахарная эпиляция
+                </h3>
+
+            </a>
+            <a class="service__item bg5">
+                <h3 class="service__title">
+                    Обучение
+                </h3>
+
+            </a>
+            <a class="service__item bg4">
+                <h3 class="service__title">
+                    Акции!
+                </h3>
+            </a>
+        </div>
+    </div>
+</section>
+<hr>
+
+<section class="work  go_to" id="work">
+    <div class="container">
+        <p class="section-title__intro">
+            best works
+        </p>
+        <h2 class="section-title__title">
+            Фото галерея
+        </h2>
+        <div id="example">
+            <carousel-3d :autoplay="true" :autoplay-timeout="4000" :display="10" :width="550" :height="400"
+                         :controls-visible="true" :controls-prev-html="'&#10092;'" :controls-next-html="'&#10093;'"
+                         :controls-width="100" :controls-height="80" :clickable="true">
+                <slide v-for="(slide, i) in slides" :index="i">
+                    <figure>
+                        <img :src="slide.name">
+                        <figcaption>
+                            {{ slide.text }}
+                        </figcaption>
+                    </figure>
+                </slide>
+            </carousel-3d>
+        </div>
+    </div>
+    </div>
+</section>
+
+<footer class="footer" id="footer">
+    <div class="container">
+        <div class="credits">
+            <a href="#" class="logo credits__logo jpk-font">АВ</a>
+            <div class="credits_right">
+                2017 / all right reserved
+            </div>
+            <button class="credits_btn btn">
+                Услуги
+            </button>
+            <div class="credits__phone">
+                +38 067 - 382 - 31 - 67
+            </div>
+            <div class="credits__mail">
+                alla_88@i.ua
+            </div>
+            <div class="credits_work">
+                Робочий день с 9-00 до 19-00
+            </div>
+            <div class="credits__up">
+                <a class="pro" href="#header" class="go_to">
+                    &#8593 Наверх
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script src="js/vm.js"></script>
+
+
+<!-- jQuery -->
+<script src="js/jquery-3.3.1.min.js"></script>
+<!-- Main Scrypt File -->
+<script src="js/main.js"></script>
+<script>
+    new Vue({
+        el: '#header',
+        data: {
+            menu1: false,
+
+            menuFulls: {
+                price: 'Prices for services',
+                work: 'photo gallery',
+                services: 'Services',
+                about: 'About'
+            },
+
+
+        }
+
+
+    })
+</script>
+<script>
+    new Vue({
+        el: '#example',
+        data: {
+
+            slides: [
+                {
+                    name: "img/1.jpg",
+                    text: "test-1"
+                },
+                {
+                    name: "img/bg2.jpg",
+                    text: "test-2"
+                },
+                {
+                    name: "img/bg3.jpg",
+                    text: "test-3"
+                },
+                {
+                    name: "img/bg4.jpg",
+                    text: "test-4"
+                },
+                {
+                    name: "img/bg5.jpg",
+                    text: "test-5"
+                },
+
+            ],
+        },
+        components: {
+            'carousel-3d': Carousel3d.Carousel3d,
+            'slide': Carousel3d.Slide
+        }
+    })
+</script>
+
+</body>
+</html>
+
